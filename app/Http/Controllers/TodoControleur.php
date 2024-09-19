@@ -12,13 +12,13 @@ class TodoControleur extends Controller
     public function listTodo(Request $request){
         // Retourne à l'utilisateur le template nommés « monLayout » avec dedans une variable nommé `$todos` qui contiendra l'ensemble des éléments dans la table
         // Votre template devra utiliser cette variable avec par exemple un @foreach($todos as $todo) … @endforeach
-        return view("monLayout", ["todos" => Todo::all()]);
+        return view("monLayout", ["todos" => $request->session()->get('user')->todos]);
     }
 
     public function addTodo(Request $request){
         // $request contient l'ensemble des données envoyées par le formulaire
         // request()->all() retourne un tableau associatif avec l'ensemble des données
-        Todo::create($request->all());
+        Todo::create(['texte' => $request->input('texte'), 'termine' => 0, 'utilisateur_id' => $request->session()->get('user')->id]);
         return redirect("/layout");
     }
 
