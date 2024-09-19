@@ -21,6 +21,7 @@ class AuthentificationControleur extends Controller
 
         if ($estValide) {
             $request->session()->put('user', $utilisateur);
+            return redirect('/layout');
         }
         else {
             return redirect('/login')->with('error', 'Identifiants incorrects');
@@ -36,5 +37,7 @@ class AuthentificationControleur extends Controller
     {
         $mdp = $request->input('password');
         $hash = password_hash($mdp, PASSWORD_DEFAULT);
+        Utilisateur::create(['name' => $request->input('name'), 'email' => $request->input('email'), 'password' => $hash]);
+        return redirect("/login");
     }
 }

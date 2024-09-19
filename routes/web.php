@@ -32,3 +32,7 @@ Route::get('/login', [AuthentificationControleur::class, 'login']);
 Route::post('/traitementLogin', [AuthentificationControleur::class, 'traitementLogin']);
 Route::get('/register', [AuthentificationControleur::class, 'register']);
 Route::post('/traitementRegister', [AuthentificationControleur::class, 'traitementRegister']);
+
+Route::middleware('throttle:5,1')->get('/throttle', function () {
+    return 'Hello World';
+});

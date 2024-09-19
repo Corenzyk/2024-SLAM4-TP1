@@ -3,21 +3,20 @@
 @section('title', 'Contact')
 
 @section('content')
-    <form method="POST" action="/contact">
+    <form method="POST" action="/traitementRegister">
         @csrf
-        <label>Objet du mail :</label>
-        <input name="titre" id="titre" type="text" />
+        <label>Votre nom :</label>
+        <input name="name" id="name" type="text" />
         <br>
-        <textarea name="texte" id="texte" placeholder="Corps du mail..."></textarea>
+        <label>Email :</label>
+        <input name="email" id="email" type="text" />
         <br>
-        <label>Votre mail :</label>
-        <input name="email" id="email" type="email" />
+        <label>Mot de passe :</label>
+        <input name="password" id="password" type="password" />
         <br>
-        <button type="submit">Valider</button>
+        <button type="submit">S'inscrire</button>
         @if(session('error'))
             <div style="color: red;">{{ session('error') }}</div>
-        @elseif(session('success'))
-            <div style="color: green;">{{ session('success') }}</div>
         @endif
     </form>
 @endsection
