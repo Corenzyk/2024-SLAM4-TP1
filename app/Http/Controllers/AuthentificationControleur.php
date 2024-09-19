@@ -40,4 +40,10 @@ class AuthentificationControleur extends Controller
         Utilisateur::create(['name' => $request->input('name'), 'email' => $request->input('email'), 'password' => $hash]);
         return redirect("/login");
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+        return redirect("/");
+    }
 }
