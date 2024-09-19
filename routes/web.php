@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthentificationControleur;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PingPongControleur;
 use App\Http\Controllers\TestFlashController;
@@ -25,3 +26,8 @@ Route::get('/supprime/{id}', [TodoControleur::class, 'deleteTodo']);
 
 Route::get('/contact',  [ContactController::class, 'afficheForm']);
 Route::post('/contact',  [ContactController::class, 'addMail']);
+
+Route::get('/login', [AuthentificationControleur::class, 'login']);
+Route::post('/traitementLogin', [AuthentificationControleur::class, 'traitementLogin']);
+Route::get('/register', [AuthentificationControleur::class, 'register']);
+Route::post('/traitementRegister', [AuthentificationControleur::class, 'traitementRegister']);
