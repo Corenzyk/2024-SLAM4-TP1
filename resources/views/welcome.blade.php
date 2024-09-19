@@ -12,4 +12,9 @@
         <a href="https://forge.laravel.com">Forge</a>
         <a href="https://github.com/laravel/laravel">GitHub</a>
     </div>
+
+    <div>
+        <button onclick="window.location.href = '/login';">Se connecter</button>
+        <button onclick="window.location.href = '/register';">S'inscrire</button>
+    </div>
 @endsection
